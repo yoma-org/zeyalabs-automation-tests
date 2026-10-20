@@ -1,0 +1,50 @@
+# Playwright (root and per app: projects/<app>/…)
+node_modules/
+test-results/
+playwright-report/
+blob-report/
+**/playwright/.cache/
+**/playwright/.auth/
+.playwright-mcp/
+
+# Secrets (root and per app)
+.env
+.env.*
+!.env.example
+
+# Generator drafts (refactor into POM, then delete)
+**/tests/_drafts/
+
+# Python virtual envs and caches (e.g. docling-env/)
+docling-env/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build output and caches
+dist/
+coverage/
+.cache/
+*.tsbuildinfo
+
+# Claude Code personal settings (agents/ and skills/ stay committed)
+.claude/settings.local.json
+
+# Editors (keep shared .vscode/settings.json)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local reference docs (not part of the test suite)
+2206.01062v1.md
