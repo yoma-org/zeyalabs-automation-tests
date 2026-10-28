@@ -1,0 +1,30 @@
+﻿Test ID,Summary,Test Type,Priority,Labels,Repository Path,Description,Preconditions,Action,Data,Expected Result
+1,ACC-001 · Each role lands on the Alumni Wall with its own top-bar button and subtitle,Automated,High,ACC;critical;Auto-UI;review;data-driven,Farewell/01 Access & Accounts/Roles and top bar,"*Role:* Employee, Leaver, Company admin, Platform admin
+
+*Preconditions:*
+# The test site is open and the account for the variant exists (see Data variants).
+
+*Data variants* — run the steps once per variant:
+||#||Variant||Expected||
+|1|(base) Employee, no page|Button ""Create my farewell page""; subtitle ""Employee · Wave Money · no page yet""|
+|2|Leaver, draft|Button ""Your farewell page""; subtitle ""Leaver · Wave Money · draft""|
+|3|Leaver, published|Button ""Your farewell page""; subtitle ""Live leaver · Wave Money · published""|
+|4|Company admin|Button ""Admin""; subtitle ""Wave Money admin""|
+|5|Platform admin|Button ""Admin""; subtitle ""Platform admin · all entities""|
+
+(!) *Open question:* app (18 Oct 2026): employees without a page have no ""Create my farewell page"" button in the top bar, and the pill under the name reads ""Leaver"" / ""Live leaver"" / ""Wave Money admin"" (the ""Employee · Wave Money · no page yet"" subtitle is only in the menu rows). Guide or app wrong?
+
+_Source: User Guide v1.1 §1 (FW-004)_",1. The test site is open and the account for the variant exists (see Data variants).,Open the account menu (avatar and chevron at the top right) and click the account for the variant.,Account of the variant role,"The page reloads on the Alumni Wall with the heading ""Alumni Wall""."
+1,,,,,,,,Look at the button on the right of the top bar.,,"It shows the button for the variant: ""Create my farewell page"", ""Your farewell page"" or ""Admin""."
+1,,,,,,,,Open the account menu and read the subtitle under the name.,,It shows the subtitle for the variant.
+29,WALL-016 · A page leaves the wall 90 days after the leaver's last working day,Manual,Medium,WALL;Manual;review,Farewell/02 Alumni Wall/Layout and time rules,"*Role:* Employee
+
+*Preconditions:*
+# A Closed leaver whose last working day was 89 days ago is on the wall.
+
+(!) *Open question:* dev (19 Oct 2026): pages leave the UI 45 days after the last working day (data stays in the DB); the guide and the app footer say 90 days. Which is right — and should the on-screen text change?
+
+*Why manual:* needs a way to move time; automate once a test hook exists
+
+_Source: User Guide v1.1 §3_",1. A Closed leaver whose last working day was 89 days ago is on the wall.,Open the Alumni Wall on day 89 after the last working day.,,The leaver's card is shown.
+29,,,,,,,,Open the Alumni Wall on the day after 90 days have passed.,,The card is gone and the count is one lower.

@@ -6,6 +6,7 @@
     "test": "playwright test",
     "cases:build": "node scripts/test-cases.mjs",
     "cases:check": "node scripts/test-cases.mjs --check",
+    "cases:xray": "node scripts/xray-export.mjs",
     "new-project": "node scripts/new-project.mjs",
     "traceability": "node .claude/skills/playwright-skill/scripts/check-traceability.mjs"
   },

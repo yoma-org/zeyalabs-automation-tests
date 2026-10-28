@@ -16,7 +16,11 @@ PRD v2.0 for intent; "Farewall UAT Feedback.xlsx" for UAT-001 … UAT-008.
 | Web app | Yoma Farewell, Next.js on Vercel (test site, made-up people) | `BASE_URL` |
 | API | Same origin as the web app; endpoints not documented (**unconfirmed**) | `API_BASE_URL` (unused for now) |
 
-- Tests run against the test site `https://farewell-wall-git-dev-yoma-bank.vercel.app` (decided 18 Oct 2026).
+- **Target from 20 Oct 2026: UAT `https://uat-farewell.yomagroup.io`**, Microsoft Entra SSO (Yoma tenant).
+  Until a dedicated automation account exists (requested), the `employee` role signs in with the tester's own
+  account; other roles are skipped. The account menu, seeded accounts and per-test imported leavers below
+  describe the dev test site and do **not** work on UAT (**unconfirmed** how UAT test data will be provided).
+- Dev test site `https://farewell-wall-git-dev-yoma-bank.vercel.app` (target 18–20 Oct 2026); switch back via `.env`.
 - `https://farewell-wall-beryl.vercel.app` (password login) is **not** the automation target.
 - Never run against production (planned AWS, `ap-southeast-1`, with Microsoft SSO).
 
@@ -32,8 +36,12 @@ top right opens the account menu with a "Search accounts" box and groups "Platfo
 "Yoma Bank admins", "Yoma Group admins", "Leavers", "Employees". Clicking a name signs in as that person.
 Microsoft SSO is not switched on (production only, UAT-003).
 
-`tests/auth.setup.ts` opens `/login`, picks each role's account by name from the menu and saves
-`playwright/.auth/<role>.json` (git-ignored). Account names come from env: `<ROLE>_ACCOUNT`.
+`tests/auth.setup.ts` saves `playwright/.auth/<role>.json` (git-ignored) for every role that has credentials:
+- UAT: `/login` → Microsoft sign-in with `<ROLE>_EMAIL` + `<ROLE>_PASSWORD` (`MicrosoftSignInPage`). An empty
+  password means the tester types it and approves MFA in a headed run (`--project=setup --headed`, 3 min).
+  Lands on `/auth/refused?r=entra` when Microsoft accepts the account but the app does not.
+- Dev test site: picks `<ROLE>_ACCOUNT` by name from the account menu.
+- A role with neither is skipped; specs using it fail until it has an account.
 
 | Role key | Account (18 Oct 2026) | Use for |
 |---|---|---|
@@ -92,7 +100,8 @@ Open questions on cases: `docs/test-cases/source-issues.md` (41 Review cases).
 
 ## Safety
 
-- Allowed environments: the test site above only.
+- Allowed environments: UAT and the dev test site above only. UAT may hold real Yoma staff data: read-only checks
+  only with a personal account; no state-changing tests on UAT until the team agrees on test data.
 - Never: change, disable, delete or publish for the seeded accounts; change roles of seeded admins; send booklets
   for seeded departures; hide messages on seeded pages (use the test's own page).
 - Emails go to the test inbox only (guide Appendix A); never enter a real personal email — use `@example.invalid`.

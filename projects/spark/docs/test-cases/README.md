@@ -17,7 +17,7 @@ Test-case catalog for **spark**. It is the baseline for the automated **Smoke**,
 | **P2** | Core functional behaviour: list / view / filter / edit / delete, report filters, permissions. |
 | **P3** | Field-level and UI validation, messages, sorting, cosmetic. |
 
-**★ Critical business flow** — the case directly exercises one of the app's critical flows (list them here).
+**★ Critical business flow** — the case directly exercises one of the app's critical flows: sending recognitions, financial awards and their budget debit, fraud blocking / flagging, flag decisions and void / restore, payroll export and corrections, and keeping award amounts private.
 
 **Tags** (a case can have several; suites are tags, not files)
 

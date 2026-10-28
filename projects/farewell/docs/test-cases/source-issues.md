@@ -8,7 +8,7 @@ Open questions about the test cases. Each item needs an owner before the affecte
 
 | # | Topic | Detail | Affects |
 |---|---|---|---|
-| 1 | Published leavers missing from the wall | **Open — dev has not checked the behaviour yet (19 Oct 2026); leave WALL-007 in Review.** Planner 18 Oct 2026: 4 Live/Closed departures (Nandar Shwe, Khin Myat Noe, Thiha Kyaw, Zaw Myo Htun) are not on the wall. | WALL-007 |
+| 1 | Published leavers missing from the wall | **Open — issue ticket logged with dev (20 Oct 2026); leave WALL-007 in Review until it is fixed or answered.** Planner 18 Oct 2026: 3 Live Wave Money leavers (Nandar Shwe, Khin Myat Noe, Thiha Kyaw, last day 09 Oct 2027) are not on the wall, not even for themselves; Nyein Chan Aung (Live) sees their own card. Zaw Myo Htun (Closed, already left) is not in the ticket: tester expects no card. | WALL-007 |
 | 2 | Wall sort order | "Closing soonest" orders by last working day (latest first); "Most recent" gives the same order. | WALL-010, WALL-011 |
 | 3 | Employee "Create my farewell page" entry | No button in the top bar (desktop or phone) for employees without a page. | ACC-001, ACC-002, CRT-* |
 | 4 | Footer on farewell pages | /p/… pages have no footer. | ACC-005 |
